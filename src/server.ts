@@ -4,10 +4,10 @@ import * as jwt from 'jsonwebtoken';
 import * as fs from "fs";
 import cors from 'cors'
 
-const app: express.Application = express();
-const port: Number = 3000;
+const app:express.Application = express();
+const port:number = 3000;
 const key:string = '/projects/labs/rsa/private.key'
-const expirationToken:number = 300;
+const expirationToken:number = 60 * 60 * 24;
 
 app.use(bodyParser.json());
 app.use(cors());
