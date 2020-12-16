@@ -1,0 +1,27 @@
+{
+  "name": "aibackend",
+  "version": "1.0.0",
+  "description": "aplicación backend del sistema ainterview",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nedagarmo/AInterview-Backend.git"
+  },
+  "keywords": [
+    "inteligencia",
+    "artificial",
+    "entrevista",
+    "webrtc",
+    "autenticacion",
+    "jwt"
+  ],
+  "author": "Nelson Garzón",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nedagarmo/AInterview-Backend/issues"
+  },
+  "homepage": "https://github.com/nedagarmo/AInterview-Backend#readme"
+}
