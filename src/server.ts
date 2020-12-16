@@ -1,46 +1,44 @@
-import {Request, Response} from "express";
 import express from 'express';
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+import bodyParser from 'body-parser';
 import * as jwt from 'jsonwebtoken';
 import * as fs from "fs";
+import cors from 'cors'
 
-const app: Application = express();
-const port: integer = 3000;
+const app: express.Application = express();
+const port: Number = 3000;
+const key:string = '/projects/labs/rsa/private.key'
+const expirationToken:number = 300;
 
 app.use(bodyParser.json());
+app.use(cors());
+app.route('/api/login').post(login);
 
-app.route('/api/login')
-    .post(loginRoute);
+const RSA_PRIVATE_KEY = fs.readFileSync(key);
 
-const RSA_PRIVATE_KEY = fs.readFileSync('./demos/private.key');
+export function login(req: express.Request, res: express.Response) {
+    const email: string = req.body.email, password: string = req.body.password;
 
-export function loginRoute(req: Request, res: Response) {
-
-    const email = req.body.email,
-          password = req.body.password;
-
-    if (validateEmailAndPassword()) {
-       const userId = findUserIdForEmail(email);
+    if (validateUser(email, password)) {
+        const userId: string = findUserForEmail(email);
 
         const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
-                algorithm: 'RS256',
-                expiresIn: 120,
-                subject: userId
-            }
+            algorithm: 'RS256',
+            expiresIn: expirationToken,
+            subject: userId
+        });
 
-          // send the JWT back to the user
-          // TODO - multiple options available                              
-    }
-    else {
-        // send status 401 Unauthorized
-        res.sendStatus(401); 
+        res.status(200).json({ token: jwtBearerToken, expirenIn: ""});
+    } else {
+        res.status(400).json({ message: "Usuario o contraseña incorrectas." }); 
     }
 }
 
-app.listen(port, err => {
-    if (err) {
-        return console.error(err);
-    }
-    return console.log(`server is listening on ${port}`);
-});
+function validateUser(user: string, password: string): boolean {
+    return true;
+}
+
+function findUserForEmail(email:string): string {
+    return "uid";
+}
+
+app.listen(port, (): void => console.log(`server is listening on ${port}`));
