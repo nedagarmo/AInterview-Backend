@@ -6,7 +6,7 @@ import cors from 'cors'
 
 const app:express.Application = express();
 const port:number = 3000;
-const key:string = '/projects/labs/rsa/private.key';
+const key:string = '/lsf/rsa/private.key';
 const expirationToken:number = 60 * 60 * 24;
 
 app.use(bodyParser.json());

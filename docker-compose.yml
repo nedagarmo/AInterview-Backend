@@ -1,0 +1,16 @@
+version: '3'  
+services:
+  ainterview-backend:
+    image: ainterview-backend-image
+    container_name: ainterview-backend-container
+    build: 
+      context: ./
+    ports:  
+      - "7002:3000"
+    volumes:
+      - /home/ubuntu/infrastructure/secrets/rsa:/lsf/rsa
+    networks:
+      - ainterview_network
+networks:
+  ainterview_network:
+     external: true
