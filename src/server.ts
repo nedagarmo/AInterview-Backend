@@ -6,7 +6,7 @@ import cors from 'cors'
 
 const app:express.Application = express();
 const port:number = 3000;
-const key:string = '/projects/labs/rsa/private.key'
+const key:string = '/projects/labs/rsa/private.key';
 const expirationToken:number = 60 * 60 * 24;
 
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ export function login(req: express.Request, res: express.Response) {
             subject: userId
         });
 
-        res.status(200).json({ token: jwtBearerToken, expirenIn: ""});
+        res.status(200).json({ token: jwtBearerToken, expirenIn: expirationToken});
     } else {
         res.status(400).json({ message: "Usuario o contraseña incorrectas." }); 
     }
