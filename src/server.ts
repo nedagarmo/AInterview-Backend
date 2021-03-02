@@ -63,20 +63,20 @@ export function interview(req: express.Request, res: express.Response) {
 export function calendar(req: express.Request, res: express.Response) {
     res.status(200).json([{
         title: 'Entrevista Desarrollador de Software',
-        start: '2021-01-06 08:00',
-        end: '2021-01-06 09:00',
+        start: '2021-03-01 23:00',
+        end: '2021-03-01 23:30',
         id: '1'
       },
       {
         title: 'Entrevista Arquitecto de Software',
-        start: '2021-01-07 11:00',
-        end: '2021-01-07 12:00',
+        start: '2021-03-07 11:00',
+        end: '2021-03-07 12:00',
         id: '2'
       },
       {
         title: 'Entrevista Gerente de Proyectos',
-        start: '2021-01-09 15:00',
-        end: '2021-01-09 16:00',
+        start: '2021-03-09 15:00',
+        end: '2021-03-09 16:00',
         id: '3'
       }]);
 }
